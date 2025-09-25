@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ContainingType": "generator_web.Controllers.GeneratorController",
+    "Method": "Add",
+    "RelativePath": "api/Generator/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "generator_web.Models.generator_data",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

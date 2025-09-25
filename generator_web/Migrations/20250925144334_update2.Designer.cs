@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using generator_web.Models;
 
@@ -11,9 +12,11 @@ using generator_web.Models;
 namespace generator_web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250925144334_update2")]
+    partial class update2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +34,6 @@ namespace generator_web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BataryaVoltaji")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Baterya")
                         .HasColumnType("int");
 
                     b.Property<string>("CalismaDurumu")
@@ -56,9 +56,6 @@ namespace generator_web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("GenVoltaj_l3")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JeneratorGucu")
                         .HasColumnType("int");
 
                     b.Property<int>("MotorRpm")
