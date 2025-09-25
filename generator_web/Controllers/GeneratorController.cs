@@ -17,19 +17,78 @@ namespace generator_web.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] generator_data data)
         {
-            // 1. Veriyi al
-            if (data == null)
-                return BadRequest("Veri boş olamaz");
+            try
+            {
+                // 1. Veriyi kontrol et
+                if (data == null)
+                    return BadRequest("Veri boş olamaz");
 
-            // 2. Veritabanına ekle
-            _context.generator_datas.Add(data);
+                // 3. Veritabanına ekle
+                _context.generator_datas.Add(data);
 
-            // 3. Kaydet
-            await _context.SaveChangesAsync();
+                // 4. Kaydet
+                await _context.SaveChangesAsync();
 
-            // 4. Cevap dön
-            return Ok(new { message = "Veri başarıyla eklendi", id = data.Id });
+                // 5. Başarılı cevap dön
+                return Ok(new
+                {
+                    message = "Veri başarıyla eklendi",
+                    timestamp = data.timestamp
+                });
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda log ve cevap
+                return StatusCode(500, new
+                {
+                    message = "Veri eklenirken hata oluştu",
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var data = await Task.FromResult(_context.generator_datas.ToList());
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Veri alınırken hata oluştu",
+                    error = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("latest")]
+        public async Task<IActionResult> GetLatest()
+        {
+            try
+            {
+                var latestData = await Task.FromResult(
+                    _context.generator_datas
+                        .OrderByDescending(x => x.timestamp)
+                        .FirstOrDefault()
+                );
+
+                if (latestData == null)
+                    return NotFound("Veri bulunamadı");
+
+                return Ok(latestData);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Veri alınırken hata oluştu",
+                    error = ex.Message
+                });
+            }
         }
     }
-
 }

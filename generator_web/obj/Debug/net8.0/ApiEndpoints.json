@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "ContainingType": "generator_web.Controllers.GeneratorController",
+    "Method": "GetAll",
+    "RelativePath": "api/Generator",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "generator_web.Controllers.GeneratorController",
+    "Method": "Add",
+    "RelativePath": "api/Generator/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "generator_web.Models.generator_data",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "generator_web.Controllers.GeneratorController",
+    "Method": "GetLatest",
+    "RelativePath": "api/Generator/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
