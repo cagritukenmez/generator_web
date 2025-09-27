@@ -514,3 +514,8 @@ C:\Users\damie\source\repos\generator_web\generator_web\obj\Debug\net8.0\refint\
 C:\Users\damie\source\repos\generator_web\generator_web\obj\Debug\net8.0\generator_web.pdb
 C:\Users\damie\source\repos\generator_web\generator_web\obj\Debug\net8.0\generator_web.genruntimeconfig.cache
 C:\Users\damie\source\repos\generator_web\generator_web\obj\Debug\net8.0\ref\generator_web.dll
+C:\Users\grfsp\OneDrive\Masaüstü\evet\generator_web\generator_web\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\grfsp\OneDrive\Masaüstü\evet\generator_web\generator_web\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\grfsp\OneDrive\Masaüstü\evet\generator_web\generator_web\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\grfsp\OneDrive\Masaüstü\evet\generator_web\generator_web\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\grfsp\OneDrive\Masaüstü\evet\generator_web\generator_web\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
