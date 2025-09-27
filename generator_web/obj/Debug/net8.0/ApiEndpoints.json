@@ -1,5 +1,41 @@
 [
   {
+    "ContainingType": "generator_web.Controllers.AlertController",
+    "Method": "GetActiveAlerts",
+    "RelativePath": "api/Alert/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "generator_web.Controllers.AlertController",
+    "Method": "CheckConditions",
+    "RelativePath": "api/Alert/check",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "generator_web.Models.generator_data",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "generator_web.Controllers.AlertController",
+    "Method": "GetCurrentStatus",
+    "RelativePath": "api/Alert/status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "generator_web.Controllers.GeneratorController",
     "Method": "GetAll",
     "RelativePath": "api/Generator",

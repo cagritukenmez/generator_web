@@ -3,6 +3,7 @@
 }
 @model generator_web.Models.generator_data
 
+
 <style>
     .monitoring-container {
         min-height: 100vh;
@@ -27,15 +28,15 @@
         overflow: hidden;
     }
 
-        .panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
+    .panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
 
     .panel-icon {
         font-size: 24px;
@@ -63,9 +64,9 @@
         font-size: 14px;
     }
 
-        .parameter-row:last-child {
-            border-bottom: none;
-        }
+    .parameter-row:last-child {
+        border-bottom: none;
+    }
 
     .parameter-label {
         color: #b0b0b0;
@@ -142,10 +143,10 @@
         font-size: 13px;
     }
 
-        .bottom-bar-item span {
-            color: #ffffff;
-            font-weight: 500;
-        }
+    .bottom-bar-item span {
+        color: #ffffff;
+        font-weight: 500;
+    }
 
     .icon-small {
         font-size: 16px;
@@ -184,9 +185,9 @@
             display: flex;
         }
 
-            .header h1 {
-                font-size: 32px;
-            }
+        .header h1 {
+            font-size: 32px;
+        }
 
         .stats-grid {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -214,9 +215,6 @@
     }
 
 
-
-
-
     .dashboard-container {
         max-width: auto;
         margin: 0 auto;
@@ -236,12 +234,12 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-        .header h1 {
-            padding: 20px 50px 20px;
-            display: flex;
-            font-size: 48px;
-            margin: 7px;
-        }
+    .header h1 {
+        padding: 20px 50px 20px;
+        display: flex;
+        font-size: 48px;
+        margin: 7px;
+    }
 
     .header-buttons {
         display: flex;
@@ -296,10 +294,10 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
 
     .stat-icon {
         font-size: 40px;
@@ -404,10 +402,10 @@
         gap: 10px;
     }
 
-        .control-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
+    .control-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
 
     .btn-start {
         background: #27ae60;
@@ -462,6 +460,40 @@
     .btn-emergency::before {
         content: "⚠️";
     }
+
+    .alert-fuel_low {
+        background: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+
+    .alert-no_power {
+        background: rgba(220, 53, 69, 0.1);
+        border-left: 4px solid #dc3545;
+        color: #721c24;
+    }
+
+    .alert-dual_power {
+        background: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+
+    .alert-icon {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .alert-message {
+        flex: 1;
+        font-weight: 500;
+    }
+
+    .alert-time {
+        font-size: 12px;
+        opacity: 0.8;
+        margin-left: 10px;
+    }
 </style>
 
 <body>
@@ -482,7 +514,7 @@
         <div class="stats-grid">
             <div class="stat-card power">
                 <span class="stat-icon">⚡</span>
-                <div class="stat-value">@Model.JeneratorGucu kW</div>
+                <div class="stat-value">@Model.GenUretilenGuc kW</div>
                 <div class="stat-label">Jeneratör Gücü</div>
             </div>
 
@@ -500,7 +532,7 @@
 
             <div class="stat-card battery">
                 <span class="stat-icon">🔋</span>
-                <div class="stat-value">@Model.baterya V</div>
+                <div class="stat-value">@Model.BataryaVoltaji V</div>
                 <div class="stat-label">Batarya</div>
             </div>
         </div>
@@ -522,11 +554,34 @@
         </div>
 
         <!-- Sistem alarm durumu-->
-        <div class="sistem-alarm">
+        @* <div class="sistem-alarm">
             <div class="sistem-info">
                 <h2>🚨 Sistem alarm durumu</h2>
             </div>
             <p>Alarm durumu kontrol ediliyor ⚡</p>
+        </div> *@
+
+        <div class="sistem-alarm">
+            <div class="sistem-info">
+                <h2>🚨 Sistem Alarm Durumu</h2>
+            </div>
+
+            @if (ViewBag.Alerts != null && ((List<generator_web.Models.Alert>)ViewBag.Alerts).Count > 0)
+            {
+                @foreach (var alert in (List<generator_web.Models.Alert>)ViewBag.Alerts)
+                {
+                    <div class="alert alert-@alert.Type.ToLower()">
+                        <span class="alert-icon">⚠️</span>
+                        <span class="alert-message">@alert.Message</span>
+                        <span></span>
+                        <span class="alert-time">@alert.CreatedAt.ToString("HH:mm")</span>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>✅ Sistem normal çalışıyor</p>
+            }
         </div>
 
 

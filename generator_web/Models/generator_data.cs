@@ -26,8 +26,8 @@
         public int YakitSeviyesi { get; set; }
         public int BataryaVoltaji { get; set; }
         public int timestamp { get; set; }
-        public int baterya { get; set; }
-        public int JeneratorGucu { get; set; }
+      
+        
 
     }
 }
