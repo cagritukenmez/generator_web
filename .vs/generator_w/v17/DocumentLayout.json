@@ -1,8 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\damie\\source\\repos\\generator_web\\",
+  "WorkspaceRootPath": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\alert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\alert\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -37,6 +38,29 @@
     {
       "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\models\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\models\\alert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\grfsp\\onedrive\\masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\grfsp\\onedrive\\masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\controllers\\generatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\controllers\\generatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\grfsp\\onedrive\\masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\grfsp\\onedrive\\masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/generator_db/True/SqlTable/dbo.user_datas.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\grfsp\\onedrive\\masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\models\\user_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\models\\user_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> ct
     }
   ],
   "DocumentGroupContainers": [
@@ -45,6 +69,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< HEAD
           "DockedWidth": 296,
           "SelectedChildIndex": 0,
           "Children": [
@@ -72,11 +97,29 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-26T17:56:55.858Z",
+=======
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GeneratorController.cs",
+              "DocumentMoniker": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Controllers\\GeneratorController.cs",
+              "RelativeDocumentMoniker": "generator_web\\Controllers\\GeneratorController.cs",
+              "ToolTip": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Controllers\\GeneratorController.cs",
+              "RelativeToolTip": "generator_web\\Controllers\\GeneratorController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAI8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T14:11:12.19Z",
+              "IsPinned": true,
+>>>>>>> ct
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+<<<<<<< HEAD
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "generator_web\\Models\\AppDbContext.cs",
@@ -124,11 +167,19 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-26T09:51:46.708Z",
+=======
+              "Title": "dbo.user_datas [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/generator_db/True/SqlTable/dbo.user_datas.sql",
+              "ToolTip": "dbo.user_datas [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-27T16:33:20.451Z",
+>>>>>>> ct
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+<<<<<<< HEAD
               "Title": "AlertController.cs",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\AlertController.cs",
               "RelativeDocumentMoniker": "generator_web\\Controllers\\AlertController.cs",
@@ -137,10 +188,21 @@
               "ViewState": "AgIAAOoAAAAAAAAAAAAkwAYBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-26T09:50:07.373Z",
+=======
+              "Title": "user_data.cs",
+              "DocumentMoniker": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Models\\user_data.cs",
+              "RelativeDocumentMoniker": "generator_web\\Models\\user_data.cs",
+              "ToolTip": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Models\\user_data.cs",
+              "RelativeToolTip": "generator_web\\Models\\user_data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T15:51:38.616Z",
+>>>>>>> ct
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Home\\Index.cshtml",
@@ -169,6 +231,43 @@
               "ViewState": "AgIAACQAAAAAAAAAAAAYwDcAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-26T16:14:41.83Z",
+=======
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\appsettings.json",
+              "RelativeDocumentMoniker": "generator_web\\appsettings.json",
+              "ToolTip": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\appsettings.json",
+              "RelativeToolTip": "generator_web\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-27T13:10:27.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "generator_web\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "generator_web\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAM4BAAAAAAAAAAAAAN8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-26T15:20:56.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Program.cs",
+              "RelativeDocumentMoniker": "generator_web\\Program.cs",
+              "ToolTip": "C:\\Users\\grfsp\\OneDrive\\Masa\u00FCst\u00FC\\evet\\generator_web\\generator_web\\Program.cs",
+              "RelativeToolTip": "generator_web\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T15:20:08.943Z",
+>>>>>>> ct
               "EditorCaption": ""
             }
           ]
