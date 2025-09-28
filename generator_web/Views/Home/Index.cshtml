@@ -469,14 +469,15 @@
     <div class="dashboard-container">
         <!-- Header -->
 
-        <div class="header">
-            <h1>⚡ D-300 MK3 Jeneratör Monitoring Dashboard</h1>
-            <div class="header-buttons">
-                <button class="header-btn btn-disconnect">🔴 Bağlantı Kontrol Ediliyor...</button>
-                <button class="header-btn btn-connect">📡 ------</button>
-                <button class="header-btn btn-update">🔄 Güncelleniyor...</button>
-            </div>
+        <div class="control-buttons">
+            <button data-command="START" data-param="1" class="control-btn btn-start command-btn">START</button>
+            <button data-command="STOP" data-param="0" class="control-btn btn-stop command-btn">STOP</button>
+            <button data-command="AUTO" data-param="0" class="control-btn btn-auto command-btn">AUTO</button>
+            <button data-command="MANUEL" data-param="0" class="control-btn btn-manual command-btn">MANUEL</button>
+            <button data-command="TEST" data-param="0" class="control-btn btn-test command-btn">TEST</button>
+            <button data-command="ACIL_STOP" data-param="0" class="control-btn btn-emergency command-btn">ACİL STOP</button>
         </div>
+
 
         <!-- Stats Grid -->
         <div class="stats-grid">
@@ -696,22 +697,16 @@
 <script>
     /*
       fetchLatest: /api/generator/latest'den veri çeker ve sayfadaki alanları günceller.
-      Çalışma şekli:
-        - İlk yüklemede hemen çağırır.
-        - Sonra her 10 saniyede bir çağırır.
-        - Hem camelCase hem PascalCase JSON anahtarlarına uyumlu olacak şekilde fallback kullanır.
-        - Panelleri başlığa göre (Şebeke, Jeneratör vs.) bulur ve ilgili satırları günceller.
+      ... (önceki fetchLatest fonksiyonu ve yardımcıları burada devam ediyor) ...
     */
 
     (function() {
         const API_URL = '/api/generator/latest';
         const POLL_INTERVAL_MS = 10000;
 
-        // Küçük yardımcılar
         const lowerFirst = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
         const upperFirst = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 
-        // JSON'dan alan alırken anahtar isimleri camelCase veya PascalCase olabilir.
         function getField(obj, name) {
             if (!obj) return undefined;
             return obj[name] ?? obj[lowerFirst(name)] ?? obj[upperFirst(name)];
@@ -719,10 +714,9 @@
 
         function fmtTimeStamp(ts) {
             if (!ts) return '--:--:--';
-            // ts muhtemelen ISO string veya Date time; güvenli şekilde parse etmeye çalış.
             const d = new Date(ts);
             if (isNaN(d)) return String(ts);
-            return d.toLocaleString(); // locale'e göre gösterim
+            return d.toLocaleString();
         }
 
         function secsToDHMS(totalSeconds) {
@@ -734,13 +728,11 @@
             return `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
-        // Panelleri başlığa göre seçer
         function panelByTitle(title) {
             return Array.from(document.querySelectorAll('.panel'))
                 .find(p => p.querySelector('h3') && p.querySelector('h3').textContent.trim() === title);
         }
 
-        // panel içindeki label'a göre satırı günceller
         function setPanelRow(panelEl, labelStartText, valueText) {
             if (!panelEl) return;
             Array.from(panelEl.querySelectorAll('.parameter-row')).forEach(row => {
@@ -753,13 +745,11 @@
             });
         }
 
-        // Basit alan güncelleyiciler (stat-cards gibi)
         function setSelectorText(selector, text) {
             const el = document.querySelector(selector);
             if (el) el.textContent = text;
         }
 
-        // Durum indikatörünü güncelle
         function setStatusOnline(isOnline) {
             document.querySelectorAll('.status-indicator').forEach(si => {
                 si.classList.toggle('status-online', isOnline);
@@ -775,26 +765,15 @@
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const json = await res.json();
 
-                // Başarı: online göster
                 setStatusOnline(true);
 
-                // Hızlı erişim fonksiyonu
                 const f = name => getField(json, name);
 
-                // STAT CARDS (üst kısım)
-                const genPower = f('GenUretilenGuc') ?? f('genUretilenGuc') ?? f('ToplamGuc') ?? '';
-                setSelectorText('.power .stat-value', genPower !== '' ? `${genPower} kW` : '-- kW');
+                setSelectorText('.power .stat-value', (f('GenUretilenGuc') ?? f('genUretilenGuc') ?? f('ToplamGuc') ?? '--') + ' kW');
+                setSelectorText('.rpm .stat-value', (f('MotorRpm') ?? f('motorRpm') ?? '--') + ' rpm');
+                setSelectorText('.fuel .stat-value', (f('YakitSeviyesi') ?? f('yakitSeviyesi') ?? '--') + ' %');
+                setSelectorText('.battery .stat-value', (f('BataryaVoltaji') ?? f('bataryaVoltaji') ?? '--') + ' V');
 
-                const rpm = f('MotorRpm') ?? f('motorRpm') ?? '';
-                setSelectorText('.rpm .stat-value', rpm !== '' ? `${rpm} rpm` : '-- rpm');
-
-                const fuel = f('YakitSeviyesi') ?? f('yakitSeviyesi') ?? '';
-                setSelectorText('.fuel .stat-value', fuel !== '' ? `${fuel} %` : '-- %');
-
-                const batt = f('BataryaVoltaji') ?? f('bataryaVoltaji') ?? '';
-                setSelectorText('.battery .stat-value', batt !== '' ? `${batt} V` : '-- V');
-
-                // ALT BİLGİ ÇUBUĞU
                 const ts = f('timestamp') ?? f('Timestamp') ?? f('time') ?? f('Time');
                 const lastUpdateEl = document.getElementById('lastUpdate');
                 if (lastUpdateEl) lastUpdateEl.textContent = fmtTimeStamp(ts);
@@ -811,14 +790,12 @@
                     if (ipEl) ipEl.textContent = ip;
                 }
 
-                // HEADER durum butonları (örnek)
                 const btnConnect = document.querySelector('.btn-connect');
                 if (btnConnect) btnConnect.textContent = `📡 ${ip ?? '—'}`;
 
                 const btnUpdate = document.querySelector('.btn-update');
                 if (btnUpdate) btnUpdate.textContent = `🔄 Son: ${new Date().toLocaleTimeString()}`;
 
-                // PANELLER İÇERİSİNİ GÜNCELLE (Şebeke)
                 const sebeke = panelByTitle('Şebeke');
                 if (sebeke) {
                     setPanelRow(sebeke, 'L1 Voltaj:', (f('SebekeVoltaj_l1') ?? f('sebekeVoltaj_l1') ?? '--') + ' V');
@@ -829,7 +806,6 @@
                     setPanelRow(sebeke, 'Şebeke Durumu:', (f('SebekeDurumu') ?? '--'));
                 }
 
-                // JENERATÖR PANELİ
                 const jener = panelByTitle('Jeneratör');
                 if (jener) {
                     setPanelRow(jener, 'L1 Voltaj:', (f('GenVoltaj_l1') ?? '--') + ' V');
@@ -840,7 +816,6 @@
                     setPanelRow(jener, 'Güç Faktörü:', (f('GenGucFaktoru') ?? '--'));
                 }
 
-                // MOTOR BİLGİLERİ PANELİ
                 const motor = panelByTitle('Motor Bilgileri');
                 if (motor) {
                     setPanelRow(motor, 'Motor RPM:', (f('MotorRpm') ?? '--') + ' rpm');
@@ -850,7 +825,6 @@
                     setPanelRow(motor, 'Batarya Voltajı:', (f('BataryaVoltaji') ?? '--') + ' V');
                 }
 
-                // Çalışma durumu paneli (genel)
                 const calisma = panelByTitle('Çalışma Durumu');
                 if (calisma) {
                     setPanelRow(calisma, 'Çalışma Durumu:', (f('CalismaDurumu') ?? f('CalismaDurumu') ?? '--'));
@@ -858,7 +832,6 @@
                     setPanelRow(calisma, '⚙️ Operasyon Modu:', (f('OperationMode') ?? '--'));
                 }
 
-                // Opsiyonel: Konsola ayrıntı yaz
                 console.debug('Latest data pulled', json);
 
             } catch (err) {
@@ -871,11 +844,51 @@
             }
         }
 
-        // Başlat
         fetchLatest();
-        // Polling
         setInterval(fetchLatest, POLL_INTERVAL_MS);
+
+
+        // *** Yeni Eklenen Komut Gönderme İşlevi Başlangıcı ***
+        document.addEventListener('DOMContentLoaded', () => {
+            async function sendCommandToESP32(command, param) {
+                const payload = { command: command, param: param };
+                try {
+                    const res = await fetch('/api/generator/command', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!res.ok) { // Hata durumunda da JSON okumaya çalış
+                        const errorData = await res.json().catch(() => ({ status: 'unknown error' }));
+                        throw new Error(`HTTP Hata ${res.status}: ${errorData.status || 'Sunucu hatası'}`);
+                    }
+                    const data = await res.json();
+                    console.log('Sunucudan cevap:', data);
+                    alert(`Komut gönderildi (${command}): ` + (data?.status ?? 'başarı'));
+                } catch (err) {
+                    console.error('Gönderme hatası:', err);
+                    alert(`Komut gönderilemedi (${command}): ${err.message || 'Bağlantı hatası'}`);
+                }
+            }
+
+            // Tüm '.control-btn' sınıfına sahip butonlar için olay delegasyonu
+            document.querySelector('.control-buttons').addEventListener('click', (event) => {
+                const targetButton = event.target.closest('.control-btn');
+
+                if (targetButton) {
+                    const command = targetButton.dataset.command;
+                    // Eğer data-param niteliği varsa onu kullan, yoksa varsayılan olarak 1 kullan (veya 0)
+                    const param = targetButton.dataset.param !== undefined ? parseInt(targetButton.dataset.param) : 1;
+
+                    if (command) {
+                        sendCommandToESP32(command, param);
+                    } else {
+                        console.warn('Tıklanan buton için data-command niteliği bulunamadı:', targetButton);
+                    }
+                }
+            });
+        });
+        // *** Yeni Eklenen Komut Gönderme İşlevi Sonu ***
 
     })();
 </script>
-

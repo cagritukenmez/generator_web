@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 // MVC servislerini ekle
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // 🧱 HTTP Pipeline ayarları
