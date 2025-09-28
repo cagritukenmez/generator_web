@@ -9,5 +9,7 @@ namespace generator_web.Models
 
         public DbSet<generator_data> generator_datas{ get; set; }
         public DbSet<user_data> user_datas { get; set; }
+
+        public DbSet<Alert> Alerts { get; set; }
     }
 }
