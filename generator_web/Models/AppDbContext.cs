@@ -8,7 +8,7 @@ namespace generator_web.Models
             : base(options) { }
 
         public DbSet<generator_data> generator_datas{ get; set; }
-        public DbSet<user_data> user_datas { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Alert> Alerts { get; set; }
     }

@@ -49,6 +49,31 @@ namespace generator_web.Migrations
                     b.ToTable("Alerts");
                 });
 
+            modelBuilder.Entity("generator_web.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("generator_web.Models.generator_data", b =>
                 {
                     b.Property<int>("Id")
@@ -80,9 +105,6 @@ namespace generator_web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("GenVoltaj_l3")
-                        .HasColumnType("int");
-
-                    b.Property<int>("JeneratorGucu")
                         .HasColumnType("int");
 
                     b.Property<int>("MotorRpm")
@@ -121,35 +143,12 @@ namespace generator_web.Migrations
                     b.Property<int>("YakitSeviyesi")
                         .HasColumnType("int");
 
-                    b.Property<int>("baterya")
-                        .HasColumnType("int");
-
                     b.Property<int>("timestamp")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("generator_datas");
-                });
-
-            modelBuilder.Entity("generator_web.Models.user_data", b =>
-                {
-                    b.Property<int>("userId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userId"));
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("command")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("userId");
-
-                    b.ToTable("user_datas");
                 });
 #pragma warning restore 612, 618
         }

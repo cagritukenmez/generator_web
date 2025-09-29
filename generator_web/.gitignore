@@ -1,0 +1,34 @@
+# Visual Studio
+.vs/
+*.vscode/
+*.user
+*.suo
+*.cache
+*.log
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+[Bb]uild/
+x64/
+x86/
+*.dll
+*.exe
+*.pdb
+
+# Web / Node.js
+node_modules/
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Others
+*.vsidx

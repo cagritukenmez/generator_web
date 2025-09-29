@@ -63,6 +63,22 @@
   },
   {
     "ContainingType": "generator_web.Controllers.GeneratorController",
+    "Method": "Send",
+    "RelativePath": "api/Generator/command",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cmd",
+        "Type": "generator_web.Models.CommandDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "generator_web.Controllers.GeneratorController",
     "Method": "GetLatest",
     "RelativePath": "api/Generator/latest",
     "HttpMethod": "GET",

@@ -134,14 +134,6 @@ namespace generator_web.Controllers
                     // JSON değilse ham text al
                     espBody = await response.Content.ReadAsStringAsync(cancellationToken);
                 }
-                var userLog = new user_data
-                {
-                    //UserId = 1,//kullanıcı'nın id'si 
-                    command = cmd.Command,
-                    DateTime = DateTime.Now
-                };
-                _context.user_datas.Add(userLog);
-                await _context.SaveChangesAsync();
                 return Ok(new { status = "sent", command = cmd.Command, param = cmd.Param, espResponse = espBody });
             }
             catch (OperationCanceledException)

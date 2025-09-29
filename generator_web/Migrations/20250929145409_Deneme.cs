@@ -6,11 +6,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace generator_web.Migrations
 {
     /// <inheritdoc />
-    public partial class deneme : Migration
+    public partial class Deneme : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Alerts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alerts", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "generator_datas",
                 columns: table => new
@@ -45,17 +61,18 @@ namespace generator_web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user_datas",
+                name: "Users",
                 columns: table => new
                 {
-                    userId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    command = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_datas", x => x.userId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
         }
 
@@ -63,10 +80,13 @@ namespace generator_web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Alerts");
+
+            migrationBuilder.DropTable(
                 name: "generator_datas");
 
             migrationBuilder.DropTable(
-                name: "user_datas");
+                name: "Users");
         }
     }
 }
