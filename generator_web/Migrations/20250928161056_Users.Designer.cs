@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using generator_web.Models;
 
@@ -11,9 +12,11 @@ using generator_web.Models;
 namespace generator_web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250928161056_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,27 +104,27 @@ namespace generator_web.Migrations
                     b.ToTable("ControlActions");
                 });
 
-            modelBuilder.Entity("generator_web.Models.User", b =>
+            modelBuilder.Entity("generator_web.Models.UserModel", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("userId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userId"));
 
                     b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("userId");
 
                     b.ToTable("Users");
                 });
@@ -159,9 +162,6 @@ namespace generator_web.Migrations
                     b.Property<int>("GenVoltaj_l3")
                         .HasColumnType("int");
 
-                    b.Property<int>("JeneratorGucu")
-                        .HasColumnType("int");
-
                     b.Property<int>("MotorRpm")
                         .HasColumnType("int");
 
@@ -196,9 +196,6 @@ namespace generator_web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("YakitSeviyesi")
-                        .HasColumnType("int");
-
-                    b.Property<int>("baterya")
                         .HasColumnType("int");
 
                     b.Property<int>("timestamp")

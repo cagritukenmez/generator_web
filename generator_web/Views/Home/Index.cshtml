@@ -515,25 +515,25 @@
         <div class="stats-grid">
             <div class="stat-card power">
                 <span class="stat-icon">⚡</span>
-                <div class="stat-value">@Model.GenUretilenGuc kW</div>
+                <div class="stat-value">@(Model?.GenUretilenGuc ?? 0) kW</div>
                 <div class="stat-label">Jeneratör Gücü</div>
             </div>
 
             <div class="stat-card rpm">
                 <span class="stat-icon">🔄</span>
-                <div class="stat-value">@Model.MotorRpm rpm</div>
+                <div class="stat-value">@(Model?.MotorRpm ?? 0) rpm</div>
                 <div class="stat-label">Motor RPM</div>
             </div>
 
             <div class="stat-card fuel">
                 <span class="stat-icon">⛽</span>
-                <div class="stat-value">@Model.YakitSeviyesi %</div>
+                <div class="stat-value">@(Model?.YakitSeviyesi ?? 0) %</div>
                 <div class="stat-label">Yakıt Seviyesi</div>
             </div>
 
             <div class="stat-card battery">
                 <span class="stat-icon">🔋</span>
-                <div class="stat-value">@Model.BataryaVoltaji V</div>
+                <div class="stat-value">@(Model?.BataryaVoltaji ?? 0) V</div>
                 <div class="stat-label">Batarya</div>
             </div>
         </div>
@@ -554,13 +554,6 @@
             </div>
         </div>
 
-        <!-- Sistem alarm durumu-->
-        @* <div class="sistem-alarm">
-            <div class="sistem-info">
-                <h2>🚨 Sistem alarm durumu</h2>
-            </div>
-            <p>Alarm durumu kontrol ediliyor ⚡</p>
-        </div> *@
 
         <div class="sistem-alarm">
             <div class="sistem-info">
@@ -574,7 +567,6 @@
                     <div class="alert alert-@alert.Type.ToLower()">
                         <span class="alert-icon">⚠️</span>
                         <span class="alert-message">@alert.Message</span>
-                        <span></span>
                         <span class="alert-time">@alert.CreatedAt.ToString("HH:mm")</span>
                     </div>
                 }
@@ -584,7 +576,6 @@
                 <p>✅ Sistem normal çalışıyor</p>
             }
         </div>
-
 
     </div>
 
@@ -945,5 +936,184 @@
         });
         // *** Yeni Eklenen Komut Gönderme İşlevi Sonu ***
 
-    })();
+    // Fonction pour exécuter une action de contrôle
+    async function executeControlAction(actionType) {
+        try {
+            // Afficher un indicateur de chargement sur le bouton
+            const button = document.querySelector(`.btn-${actionType.toLowerCase()}`);
+            const originalText = button.textContent;
+            button.textContent = '⏳ İşleniyor...';
+            button.disabled = true;
+
+            // Envoyer la requête au serveur
+            const response = await fetch('/api/control/execute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    actionType: actionType
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showNotification(`✅ ${result.message}`, 'success');
+                console.log(`Action ${actionType} executée avec succès:`, result);
+
+                // Optionnel: Mettre à jour l'affichage
+                updateLastAction(actionType, result.timestamp);
+            } else {
+                showNotification(`❌ ${result.message}`, 'error');
+                console.error(`Erreur lors de l'exécution de ${actionType}:`, result);
+            }
+
+        } catch (error) {
+            console.error('Erreur réseau:', error);
+            showNotification('❌ Bağlantı hatası oluştu', 'error');
+        } finally {
+            // Restaurer le bouton
+            const button = document.querySelector(`.btn-${actionType.toLowerCase()}`);
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+    }
+
+    // Fonction pour afficher les notifications
+    function showNotification(message, type = 'info') {
+        // Créer l'élément de notification
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            z-index: 10000;
+            transition: all 0.3s ease;
+            max-width: 350px;
+        `;
+
+        // Style selon le type
+        switch (type) {
+            case 'success':
+                notification.style.backgroundColor = '#27ae60';
+                break;
+            case 'error':
+                notification.style.backgroundColor = '#e74c3c';
+                break;
+            case 'warning':
+                notification.style.backgroundColor = '#f39c12';
+                break;
+            default:
+                notification.style.backgroundColor = '#3498db';
+        }
+
+        // Ajouter à la page
+        document.body.appendChild(notification);
+
+        // Supprimer après 5 secondes
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 5000);
+    }
+
+    // Fonction pour mettre à jour l'affichage de la dernière action
+    function updateLastAction(actionType, timestamp) {
+        const lastActionElement = document.getElementById('lastAction');
+        if (lastActionElement) {
+            lastActionElement.textContent = `${actionType} - ${new Date(timestamp).toLocaleTimeString('tr-TR')}`;
+        }
+    }
+
+    // Gestionnaires d'événements pour les boutons
+    document.addEventListener('DOMContentLoaded', function() {
+        // Boutons de contrôle
+        document.querySelectorAll('.control-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Animation du clic
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+
+                // Déterminer le type d'action selon la classe du bouton
+                let actionType = '';
+                if (this.classList.contains('btn-start')) actionType = 'START';
+                else if (this.classList.contains('btn-stop')) actionType = 'STOP';
+                else if (this.classList.contains('btn-auto')) actionType = 'AUTO';
+                else if (this.classList.contains('btn-manual')) actionType = 'MANUAL';
+                else if (this.classList.contains('btn-test')) actionType = 'TEST';
+                else if (this.classList.contains('btn-emergency')) actionType = 'EMERGENCY_STOP';
+
+                if (actionType) {
+                    // Confirmation pour l'arrêt d'urgence
+                    if (actionType === 'EMERGENCY_STOP') {
+                        if (confirm('⚠️ Acil durdurma komutunu göndermek istediğinizden emin misiniz?')) {
+                            executeControlAction(actionType);
+                        }
+                    } else {
+                        executeControlAction(actionType);
+                    }
+                }
+            });
+        });
+
+        // Header butonları (garder la fonctionnalité existante)
+        document.querySelectorAll('.header-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log(`${this.textContent} butonuna tıklandı`);
+                showNotification(`${this.textContent} tıklandı`, 'info');
+            });
+        });
+
+        // Charger la dernière action au démarrage
+        loadLastAction();
+    });
+
+    // Fonction pour charger la dernière action
+    async function loadLastAction() {
+        try {
+            const response = await fetch('/api/control/last-action');
+            if (response.ok) {
+                const result = await response.json();
+                updateLastAction(result.actionType, result.timestamp);
+            }
+        } catch (error) {
+            console.log('Aucune action précédente trouvée');
+        }
+    }
+
+    // Fonction pour rafraîchir l'historique (optionnel)
+    async function loadActionHistory() {
+        try {
+            const response = await fetch('/api/control/history?limit=10');
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Historique des actions:', result.actions);
+                return result.actions;
+            }
+        } catch (error) {
+            console.error('Erreur lors du chargement de l\'historique:', error);
+        }
+    }
+
+    // Mise à jour automatique des données (garder votre logique existante si nécessaire)
+    function updateStats() {
+        // Votre logique existante de mise à jour des stats...
+    }
+
+    // Rafraîchir les stats périodiquement
+    setInterval(updateStats, 5000);
 </script>

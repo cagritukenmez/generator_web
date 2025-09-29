@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Créer un compte</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label>Nom d’utilisateur</label>
+        <input type="text" name="username" required />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" required />
+    </div>
+    <div>
+        <label>Mot de passe</label>
+        <input type="password" name="password" required />
+    </div>
+    <button type="submit">S’inscrire</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}
+
+<p> Already have an account ? <a asp-action="Login" asp-controller="Login">Login</a> </p>
