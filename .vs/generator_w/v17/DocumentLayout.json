@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\damie\\source\\repos\\generator_web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\login\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\models\\user_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\models\\user_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,12 +15,16 @@
       "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\controllers\\generatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\controllers\\generatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|c:\\users\\damie\\source\\repos\\generator_web\\generator_web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{960D570C-39B5-41C0-BAD2-55BC19ECB5A5}|generator_web\\generator_web.csproj|solutionrelative:generator_web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,11 +34,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 317,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "user_data.cs",
+              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Models\\user_data.cs",
+              "RelativeDocumentMoniker": "generator_web\\Models\\user_data.cs",
+              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Models\\user_data.cs",
+              "RelativeToolTip": "generator_web\\Models\\user_data.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T14:26:34.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GeneratorController.cs",
+              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\GeneratorController.cs",
+              "RelativeDocumentMoniker": "generator_web\\Controllers\\GeneratorController.cs",
+              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\GeneratorController.cs",
+              "RelativeToolTip": "generator_web\\Controllers\\GeneratorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T11:59:35.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "generator_web\\wwwroot\\css\\site.css",
@@ -67,119 +81,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "generator_web\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\HomeController.cs",
               "RelativeToolTip": "generator_web\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-28T20:35:08.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.css",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\Login.css",
-              "RelativeDocumentMoniker": "generator_web\\wwwroot\\css\\Login.css",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\wwwroot\\css\\Login.css",
-              "RelativeToolTip": "generator_web\\wwwroot\\css\\Login.css",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAuwA0BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-09-28T17:36:07.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "_AuthLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Shared\\_AuthLayout.cshtml",
-              "RelativeDocumentMoniker": "generator_web\\Views\\Shared\\_AuthLayout.cshtml",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Shared\\_AuthLayout.cshtml",
-              "RelativeToolTip": "generator_web\\Views\\Shared\\_AuthLayout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T17:31:51.612Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "generator_web\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "generator_web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-28T17:26:15.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Login\\Register.cshtml",
-              "RelativeDocumentMoniker": "generator_web\\Views\\Login\\Register.cshtml",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Login\\Register.cshtml",
-              "RelativeToolTip": "generator_web\\Views\\Login\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T17:23:10.115Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Login\\Login.cshtml",
-              "RelativeDocumentMoniker": "generator_web\\Views\\Login\\Login.cshtml",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Views\\Login\\Login.cshtml*",
-              "RelativeToolTip": "generator_web\\Views\\Login\\Login.cshtml*",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAcwFIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-28T17:22:41.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Program.cs",
               "RelativeDocumentMoniker": "generator_web\\Program.cs",
               "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Program.cs",
               "RelativeToolTip": "generator_web\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-28T17:01:58.112Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "generator_web\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "generator_web\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAowGMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T16:15:11.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Users.cs",
-              "DocumentMoniker": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Models\\Users.cs",
-              "RelativeDocumentMoniker": "generator_web\\Models\\Users.cs",
-              "ToolTip": "C:\\Users\\damie\\source\\repos\\generator_web\\generator_web\\Models\\Users.cs",
-              "RelativeToolTip": "generator_web\\Models\\Users.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAqwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T15:39:59.567Z",
               "EditorCaption": ""
             }
           ]

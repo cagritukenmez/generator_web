@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("generator_web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbbc17c4aef4e4769068f275dcf17645146deb49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f0d2cd620a5eb121a5c8f8d405b2b7187bbce2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("generator_web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("generator_web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

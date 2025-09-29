@@ -159,6 +159,9 @@ namespace generator_web.Migrations
                     b.Property<int>("GenVoltaj_l3")
                         .HasColumnType("int");
 
+                    b.Property<int>("JeneratorGucu")
+                        .HasColumnType("int");
+
                     b.Property<int>("MotorRpm")
                         .HasColumnType("int");
 
@@ -193,6 +196,9 @@ namespace generator_web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("YakitSeviyesi")
+                        .HasColumnType("int");
+
+                    b.Property<int>("baterya")
                         .HasColumnType("int");
 
                     b.Property<int>("timestamp")
