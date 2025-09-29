@@ -1,10 +1,13 @@
-using System.Diagnostics;
+ï»¿using System.Diagnostics;
 using generator_web.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace generator_web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
@@ -14,9 +17,9 @@ namespace generator_web.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            // Récupérer les dernières données
+            // Take last datas
             var data = _context.generator_datas
                         .OrderByDescending(d => d.timestamp)
                         .FirstOrDefault();
@@ -25,45 +28,69 @@ namespace generator_web.Controllers
 
             if (data != null)
             {
-                // Vérifier les conditions d'alerte
+                // 1. Delete  same type of alerte
+                var existingAlerts = _context.Alerts.Where(a => a.IsActive).ToList();
+                foreach (var alert in existingAlerts)
+                {
+                    alert.IsActive = false;
+                }
+
+                // 2. verify alert condition and create new
                 if (data.YakitSeviyesi < 25)
                 {
-                    currentAlerts.Add(new Alert
+                    var fuelAlert = new Alert
                     {
                         Type = "FUEL_LOW",
-                        Message = $"Yakýt seviyesi düþük ({data.YakitSeviyesi}%) ",
+                        Message = $"YakÄ±t seviyesi dÃ¼ÅŸÃ¼k ({data.YakitSeviyesi}%)",
                         IsActive = true,
                         CreatedAt = DateTime.Now
-                    });
+                    };
+
+                    currentAlerts.Add(fuelAlert);
+                    _context.Alerts.Add(fuelAlert); 
                 }
 
                 if (data.SebekeHz == 0 && data.GenUretilenGuc == 0)
                 {
-                    currentAlerts.Add(new Alert
+                    var noPowerAlert = new Alert
                     {
                         Type = "NO_POWER",
-                        Message = "Güç kaynaðý bulunamadý (ne elektrik ne de jeneratör) ",
+                        Message = "GÃ¼Ã§ kaynaÄŸÄ± bulunamadÄ± (ne elektrik ne de jeneratÃ¶r)",
                         IsActive = true,
                         CreatedAt = DateTime.Now
-                    });
+                    };
+
+                    currentAlerts.Add(noPowerAlert);
+                    _context.Alerts.Add(noPowerAlert); 
                 }
 
                 if (data.SebekeHz > 0 && data.GenUretilenGuc > 0)
                 {
-                    currentAlerts.Add(new Alert
+                    var dualPowerAlert = new Alert
                     {
                         Type = "DUAL_POWER",
-                        Message = "Anormal durum - Elektrik ve jeneratör ayný anda çalýþýyor ",
+                        Message = "Anormal durum - Elektrik ve jeneratÃ¶r aynÄ± anda Ã§alÄ±ÅŸÄ±yor",
                         IsActive = true,
                         CreatedAt = DateTime.Now
-                    });
+                    };
+
+                    currentAlerts.Add(dualPowerAlert);
+                    _context.Alerts.Add(dualPowerAlert); 
+                }
+
+                // 3. Save all notification
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    // Log error
+                    Console.WriteLine($"Error when saving : {ex.Message}");
                 }
             }
 
-            // SOLUTION: Utiliser ViewBag pour passer les alertes
             ViewBag.Alerts = currentAlerts;
-
-            // Retourner le modèle generator_data comme attendu par la vue
             return View(data);
         }
 
