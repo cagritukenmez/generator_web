@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using generator_web.Models;
 
@@ -11,9 +12,11 @@ using generator_web.Models;
 namespace generator_web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250926174440_Test43")]
+    partial class Test43
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,9 +85,6 @@ namespace generator_web.Migrations
                     b.Property<int>("GenVoltaj_l3")
                         .HasColumnType("int");
 
-                    b.Property<int>("JeneratorGucu")
-                        .HasColumnType("int");
-
                     b.Property<int>("MotorRpm")
                         .HasColumnType("int");
 
@@ -119,9 +119,6 @@ namespace generator_web.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("YakitSeviyesi")
-                        .HasColumnType("int");
-
-                    b.Property<int>("baterya")
                         .HasColumnType("int");
 
                     b.Property<int>("timestamp")

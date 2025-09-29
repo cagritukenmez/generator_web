@@ -1,4 +1,5 @@
-﻿using generator_web.Models; // AppDbContext burada tanımlı olmalı
+﻿
+using generator_web.Models; // AppDbContext burada tanımlı olmalı
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 // MVC servislerini ekle
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // 🧱 HTTP Pipeline ayarları
@@ -34,5 +35,4 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();

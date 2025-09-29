@@ -3,6 +3,7 @@
 }
 @model generator_web.Models.generator_data
 
+
 <style>
     .monitoring-container {
         min-height: 100vh;
@@ -27,15 +28,15 @@
         overflow: hidden;
     }
 
-        .panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
+    .panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
 
     .panel-icon {
         font-size: 24px;
@@ -63,9 +64,9 @@
         font-size: 14px;
     }
 
-        .parameter-row:last-child {
-            border-bottom: none;
-        }
+    .parameter-row:last-child {
+        border-bottom: none;
+    }
 
     .parameter-label {
         color: #b0b0b0;
@@ -142,10 +143,10 @@
         font-size: 13px;
     }
 
-        .bottom-bar-item span {
-            color: #ffffff;
-            font-weight: 500;
-        }
+    .bottom-bar-item span {
+        color: #ffffff;
+        font-weight: 500;
+    }
 
     .icon-small {
         font-size: 16px;
@@ -184,9 +185,9 @@
             display: flex;
         }
 
-            .header h1 {
-                font-size: 32px;
-            }
+        .header h1 {
+            font-size: 32px;
+        }
 
         .stats-grid {
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -214,9 +215,6 @@
     }
 
 
-
-
-
     .dashboard-container {
         max-width: auto;
         margin: 0 auto;
@@ -236,12 +234,12 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-        .header h1 {
-            padding: 20px 50px 20px;
-            display: flex;
-            font-size: 48px;
-            margin: 7px;
-        }
+    .header h1 {
+        padding: 20px 50px 20px;
+        display: flex;
+        font-size: 48px;
+        margin: 7px;
+    }
 
     .header-buttons {
         display: flex;
@@ -296,10 +294,10 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
 
     .stat-icon {
         font-size: 40px;
@@ -404,10 +402,10 @@
         gap: 10px;
     }
 
-        .control-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
+    .control-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
 
     .btn-start {
         background: #27ae60;
@@ -462,6 +460,40 @@
     .btn-emergency::before {
         content: "⚠️";
     }
+
+    .alert-fuel_low {
+        background: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+
+    .alert-no_power {
+        background: rgba(220, 53, 69, 0.1);
+        border-left: 4px solid #dc3545;
+        color: #721c24;
+    }
+
+    .alert-dual_power {
+        background: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        color: #856404;
+    }
+
+    .alert-icon {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .alert-message {
+        flex: 1;
+        font-weight: 500;
+    }
+
+    .alert-time {
+        font-size: 12px;
+        opacity: 0.8;
+        margin-left: 10px;
+    }
 </style>
 
 <body>
@@ -469,20 +501,21 @@
     <div class="dashboard-container">
         <!-- Header -->
 
-        <div class="header">
-            <h1>⚡ D-300 MK3 Jeneratör Monitoring Dashboard</h1>
-            <div class="header-buttons">
-                <button class="header-btn btn-disconnect">🔴 Bağlantı Kontrol Ediliyor...</button>
-                <button class="header-btn btn-connect">📡 ------</button>
-                <button class="header-btn btn-update">🔄 Güncelleniyor...</button>
-            </div>
+        <div class="control-buttons">
+            <button data-command="START" data-param="1" class="control-btn btn-start command-btn">START</button>
+            <button data-command="STOP" data-param="0" class="control-btn btn-stop command-btn">STOP</button>
+            <button data-command="AUTO" data-param="0" class="control-btn btn-auto command-btn">AUTO</button>
+            <button data-command="MANUEL" data-param="0" class="control-btn btn-manual command-btn">MANUEL</button>
+            <button data-command="TEST" data-param="0" class="control-btn btn-test command-btn">TEST</button>
+            <button data-command="ACIL_STOP" data-param="0" class="control-btn btn-emergency command-btn">ACİL STOP</button>
         </div>
+
 
         <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card power">
                 <span class="stat-icon">⚡</span>
-                <div class="stat-value">@Model.JeneratorGucu kW</div>
+                <div class="stat-value">@Model.GenUretilenGuc kW</div>
                 <div class="stat-label">Jeneratör Gücü</div>
             </div>
 
@@ -500,7 +533,7 @@
 
             <div class="stat-card battery">
                 <span class="stat-icon">🔋</span>
-                <div class="stat-value">@Model.baterya V</div>
+                <div class="stat-value">@Model.BataryaVoltaji V</div>
                 <div class="stat-label">Batarya</div>
             </div>
         </div>
@@ -512,21 +545,44 @@
             </div>
 
             <div class="control-buttons">
-                <button class="control-btn btn-start">START</button>
-                <button class="control-btn btn-stop">STOP</button>
-                <button class="control-btn btn-auto">AUTO</button>
-                <button class="control-btn btn-manual">MANUEL</button>
-                <button class="control-btn btn-test">TEST</button>
-                <button class="control-btn btn-emergency">ACİL STOP</button>
+                <button id="btn-send-start-command" class="control-btn btn-start">START</button>
+                <button id ="btn-send-stop-command"class="control-btn btn-stop">STOP</button>
+                <button id="btn-send-auto-command"class="control-btn btn-auto">AUTO</button>
+                <button id = "btn-send-manuel-command"class="control-btn btn-manual">MANUEL</button>
+                <button id="btn-send-test-command"class="control-btn btn-test">TEST</button>
+                <button id = "btn-send-acilstop-command"class="control-btn btn-emergency">ACİL STOP</button>
             </div>
         </div>
 
         <!-- Sistem alarm durumu-->
-        <div class="sistem-alarm">
+        @* <div class="sistem-alarm">
             <div class="sistem-info">
                 <h2>🚨 Sistem alarm durumu</h2>
             </div>
             <p>Alarm durumu kontrol ediliyor ⚡</p>
+        </div> *@
+
+        <div class="sistem-alarm">
+            <div class="sistem-info">
+                <h2>🚨 Sistem Alarm Durumu</h2>
+            </div>
+
+            @if (ViewBag.Alerts != null && ((List<generator_web.Models.Alert>)ViewBag.Alerts).Count > 0)
+            {
+                @foreach (var alert in (List<generator_web.Models.Alert>)ViewBag.Alerts)
+                {
+                    <div class="alert alert-@alert.Type.ToLower()">
+                        <span class="alert-icon">⚠️</span>
+                        <span class="alert-message">@alert.Message</span>
+                        <span></span>
+                        <span class="alert-time">@alert.CreatedAt.ToString("HH:mm")</span>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>✅ Sistem normal çalışıyor</p>
+            }
         </div>
 
 
@@ -694,41 +750,200 @@
 </body>
 
 <script>
+    /*
+      fetchLatest: /api/generator/latest'den veri çeker ve sayfadaki alanları günceller.
+      ... (önceki fetchLatest fonksiyonu ve yardımcıları burada devam ediyor) ...
+    */
 
-    // Simüle edilmiş veri güncelleme
-        // function updateStats() {
-        //     const powerValue = Math.floor(Math.random() * 300);
-        //     const rpmValue = Math.floor(Math.random() * 1800) + 1200;
-        //     const fuelValue = Math.floor(Math.random() * 100);
-        //     const batteryValue = (Math.random() * 2 + 11).toFixed(1);
+    (function() {
+        const API_URL = '/api/generator/latest';
+        const POLL_INTERVAL_MS = 10000;
 
-        //     document.querySelector('.power .stat-value').textContent = `${powerValue} kW`;
-        //     document.querySelector('.rpm .stat-value').textContent = `${rpmValue} rpm`;
-        //     document.querySelector('.fuel .stat-value').textContent = `${fuelValue}%`;
-        //     document.querySelector('.battery .stat-value').textContent = `${batteryValue} V`;
-        // }
+        const lowerFirst = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
+        const upperFirst = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 
-        // Buton tıklama efektleri
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
+        function getField(obj, name) {
+            if (!obj) return undefined;
+            return obj[name] ?? obj[lowerFirst(name)] ?? obj[upperFirst(name)];
+        }
 
-                console.log(`${this.textContent} butonuna tıklandı`);
+        function fmtTimeStamp(ts) {
+            if (!ts) return '--:--:--';
+            const d = new Date(ts);
+            if (isNaN(d)) return String(ts);
+            return d.toLocaleString();
+        }
+
+        function secsToDHMS(totalSeconds) {
+            totalSeconds = Number(totalSeconds) || 0;
+            const days = Math.floor(totalSeconds / (3600*24));
+            const hours = Math.floor((totalSeconds % (3600*24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function panelByTitle(title) {
+            return Array.from(document.querySelectorAll('.panel'))
+                .find(p => p.querySelector('h3') && p.querySelector('h3').textContent.trim() === title);
+        }
+
+        function setPanelRow(panelEl, labelStartText, valueText) {
+            if (!panelEl) return;
+            Array.from(panelEl.querySelectorAll('.parameter-row')).forEach(row => {
+                const lbl = row.querySelector('.parameter-label');
+                const val = row.querySelector('.parameter-value');
+                if (!lbl || !val) return;
+                if (lbl.textContent.trim().startsWith(labelStartText)) {
+                    val.textContent = valueText;
+                }
+            });
+        }
+
+        function setSelectorText(selector, text) {
+            const el = document.querySelector(selector);
+            if (el) el.textContent = text;
+        }
+
+        function setStatusOnline(isOnline) {
+            document.querySelectorAll('.status-indicator').forEach(si => {
+                si.classList.toggle('status-online', isOnline);
+                si.classList.toggle('status-offline', !isOnline);
+            });
+            const updateEl = document.getElementById('dataUpdate');
+            if (updateEl) updateEl.textContent = isOnline ? 'Aktif' : 'Bağlantı Yok';
+        }
+
+        async function fetchLatest() {
+            try {
+                const res = await fetch(API_URL, { cache: 'no-store' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const json = await res.json();
+
+                setStatusOnline(true);
+
+                const f = name => getField(json, name);
+
+                setSelectorText('.power .stat-value', (f('GenUretilenGuc') ?? f('genUretilenGuc') ?? f('ToplamGuc') ?? '--') + ' kW');
+                setSelectorText('.rpm .stat-value', (f('MotorRpm') ?? f('motorRpm') ?? '--') + ' rpm');
+                setSelectorText('.fuel .stat-value', (f('YakitSeviyesi') ?? f('yakitSeviyesi') ?? '--') + ' %');
+                setSelectorText('.battery .stat-value', (f('BataryaVoltaji') ?? f('bataryaVoltaji') ?? '--') + ' V');
+
+                const ts = f('timestamp') ?? f('Timestamp') ?? f('time') ?? f('Time');
+                const lastUpdateEl = document.getElementById('lastUpdate');
+                if (lastUpdateEl) lastUpdateEl.textContent = fmtTimeStamp(ts);
+
+                const wifi = f('WifiSignal') ?? f('wifiSignal') ?? f('WifiSignalGucu') ?? f('wifiSignalGucu') ?? null;
+                if (wifi !== null) {
+                    const wifiEl = document.getElementById('wifiSignal');
+                    if (wifiEl) wifiEl.textContent = `${wifi}%`;
+                }
+
+                const ip = f('Esp32Ip') ?? f('esp32Ip') ?? f('Ip') ?? f('IpAddress') ?? null;
+                if (ip !== null) {
+                    const ipEl = document.getElementById('esp32Ip');
+                    if (ipEl) ipEl.textContent = ip;
+                }
+
+                const btnConnect = document.querySelector('.btn-connect');
+                if (btnConnect) btnConnect.textContent = `📡 ${ip ?? '—'}`;
+
+                const btnUpdate = document.querySelector('.btn-update');
+                if (btnUpdate) btnUpdate.textContent = `🔄 Son: ${new Date().toLocaleTimeString()}`;
+
+                const sebeke = panelByTitle('Şebeke');
+                if (sebeke) {
+                    setPanelRow(sebeke, 'L1 Voltaj:', (f('SebekeVoltaj_l1') ?? f('sebekeVoltaj_l1') ?? '--') + ' V');
+                    setPanelRow(sebeke, 'L2 Voltaj:', (f('SebekeVoltaj_l2') ?? '--') + ' V');
+                    setPanelRow(sebeke, 'L3 Voltaj:', (f('SebekeVoltaj_l3') ?? '--') + ' V');
+                    setPanelRow(sebeke, 'Frekans:', (f('SebekeHz') ?? '--') + ' Hz');
+                    setPanelRow(sebeke, 'Toplam Güç:', (f('ToplamGuc') ?? '--') + ' kW');
+                    setPanelRow(sebeke, 'Şebeke Durumu:', (f('SebekeDurumu') ?? '--'));
+                }
+
+                const jener = panelByTitle('Jeneratör');
+                if (jener) {
+                    setPanelRow(jener, 'L1 Voltaj:', (f('GenVoltaj_l1') ?? '--') + ' V');
+                    setPanelRow(jener, 'L2 Voltaj:', (f('GenVoltaj_l2') ?? '--') + ' V');
+                    setPanelRow(jener, 'L3 Voltaj:', (f('GenVoltaj_l3') ?? '--') + ' V');
+                    setPanelRow(jener, 'Frekans:', (f('GenHz') ?? '--') + ' Hz');
+                    setPanelRow(jener, 'Üretilen Güç:', (f('GenUretilenGuc') ?? '--') + ' kW');
+                    setPanelRow(jener, 'Güç Faktörü:', (f('GenGucFaktoru') ?? '--'));
+                }
+
+                const motor = panelByTitle('Motor Bilgileri');
+                if (motor) {
+                    setPanelRow(motor, 'Motor RPM:', (f('MotorRpm') ?? '--') + ' rpm');
+                    setPanelRow(motor, 'Motor Sıcaklık:', (f('MotorSicaklik') ?? '--') + ' °C');
+                    setPanelRow(motor, 'Yağ Basıncı:', (f('YagBasinci') ?? '--') + ' %');
+                    setPanelRow(motor, 'Yakıt Seviyesi:', (f('YakitSeviyesi') ?? '--') + ' %');
+                    setPanelRow(motor, 'Batarya Voltajı:', (f('BataryaVoltaji') ?? '--') + ' V');
+                }
+
+                const calisma = panelByTitle('Çalışma Durumu');
+                if (calisma) {
+                    setPanelRow(calisma, 'Çalışma Durumu:', (f('CalismaDurumu') ?? f('CalismaDurumu') ?? '--'));
+                    setPanelRow(calisma, '⏱️ Sistem Çalışma Süresi:', secsToDHMS(f('SistemCalismaSuresi') ?? f('sistemCalismaSuresi') ?? 0));
+                    setPanelRow(calisma, '⚙️ Operasyon Modu:', (f('OperationMode') ?? '--'));
+                }
+
+                console.debug('Latest data pulled', json);
+
+            } catch (err) {
+                console.warn('fetchLatest error', err);
+                setStatusOnline(false);
+                const lastUpdateEl = document.getElementById('lastUpdate');
+                if (lastUpdateEl) lastUpdateEl.textContent = '--:--:--';
+                const btnUpdate = document.querySelector('.btn-update');
+                if (btnUpdate) btnUpdate.textContent = `🔄 Hata`;
+            }
+        }
+
+        fetchLatest();
+        setInterval(fetchLatest, POLL_INTERVAL_MS);
+
+
+        // *** Yeni Eklenen Komut Gönderme İşlevi Başlangıcı ***
+        document.addEventListener('DOMContentLoaded', () => {
+            async function sendCommandToESP32(command, param) {
+                const payload = { command: command, param: param };
+                try {
+                    const res = await fetch('/api/generator/command', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!res.ok) { // Hata durumunda da JSON okumaya çalış
+                        const errorData = await res.json().catch(() => ({ status: 'unknown error' }));
+                        throw new Error(`HTTP Hata ${res.status}: ${errorData.status || 'Sunucu hatası'}`);
+                    }
+                    const data = await res.json();
+                    console.log('Sunucudan cevap:', data);
+                    alert(`Komut gönderildi (${command}): ` + (data?.status ?? 'başarı'));
+                } catch (err) {
+                    console.error('Gönderme hatası:', err);
+                    alert(`Komut gönderilemedi (${command}): ${err.message || 'Bağlantı hatası'}`);
+                }
+            }
+
+            // Tüm '.control-btn' sınıfına sahip butonlar için olay delegasyonu
+            document.querySelector('.control-buttons').addEventListener('click', (event) => {
+                const targetButton = event.target.closest('.control-btn');
+
+                if (targetButton) {
+                    const command = targetButton.dataset.command;
+                    // Eğer data-param niteliği varsa onu kullan, yoksa varsayılan olarak 1 kullan (veya 0)
+                    const param = targetButton.dataset.param !== undefined ? parseInt(targetButton.dataset.param) : 1;
+
+                    if (command) {
+                        sendCommandToESP32(command, param);
+                    } else {
+                        console.warn('Tıklanan buton için data-command niteliği bulunamadı:', targetButton);
+                    }
+                }
             });
         });
+        // *** Yeni Eklenen Komut Gönderme İşlevi Sonu ***
 
-        // Header butonları
-        document.querySelectorAll('.header-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                console.log(`${this.textContent} butonuna tıklandı`);
-            });
-        });
-
-        // Her 5 saniyede bir stats güncelle
-        setInterval(updateStats, 5000);
-        updateStats(); // İlk yükleme
-
+    })();
 </script>

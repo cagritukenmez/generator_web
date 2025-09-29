@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using generator_web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace generator_web.Controllers
 {
@@ -15,16 +16,54 @@ namespace generator_web.Controllers
 
         public IActionResult Index()
         {
-            // En son veriyi çek
+            // Récupérer les dernières données
             var data = _context.generator_datas
                         .OrderByDescending(d => d.timestamp)
                         .FirstOrDefault();
-            /*
-            ViewBag.gun = data.timestamp/;
-            ViewBag.saat = 50;
-            ViewBag.dakika = 50;
-            ViewBag.saniye = 50;
-            */
+
+            var currentAlerts = new List<Alert>();
+
+            if (data != null)
+            {
+                // Vérifier les conditions d'alerte
+                if (data.YakitSeviyesi < 25)
+                {
+                    currentAlerts.Add(new Alert
+                    {
+                        Type = "FUEL_LOW",
+                        Message = $"Yakýt seviyesi düþük ({data.YakitSeviyesi}%) ",
+                        IsActive = true,
+                        CreatedAt = DateTime.Now
+                    });
+                }
+
+                if (data.SebekeHz == 0 && data.GenUretilenGuc == 0)
+                {
+                    currentAlerts.Add(new Alert
+                    {
+                        Type = "NO_POWER",
+                        Message = "Güç kaynaðý bulunamadý (ne elektrik ne de jeneratör) ",
+                        IsActive = true,
+                        CreatedAt = DateTime.Now
+                    });
+                }
+
+                if (data.SebekeHz > 0 && data.GenUretilenGuc > 0)
+                {
+                    currentAlerts.Add(new Alert
+                    {
+                        Type = "DUAL_POWER",
+                        Message = "Anormal durum - Elektrik ve jeneratör ayný anda çalýþýyor ",
+                        IsActive = true,
+                        CreatedAt = DateTime.Now
+                    });
+                }
+            }
+
+            // SOLUTION: Utiliser ViewBag pour passer les alertes
+            ViewBag.Alerts = currentAlerts;
+
+            // Retourner le modèle generator_data comme attendu par la vue
             return View(data);
         }
 
